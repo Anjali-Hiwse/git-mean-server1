@@ -15,9 +15,9 @@ router.get('/',(request,response)=>{
 
 router.post('/',(request,response)=>{
 
-    const {title,description,price} =request.body
+    const {title,descriptions,price} =request.body
     const connection = db.connect()
-    const statement=`insert into  product (title,descriptions,price) values ('${title}','${description}','${price}')`
+    const statement=`insert into  product (title,descriptions,price) values ('${title}','${descriptions}',${price})`
     connection.query(statement,(error,data) => {
         connection.end()
         response.send(utils.createResult(error,data)) 
